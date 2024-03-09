@@ -1,0 +1,1535 @@
+{
+  "version": "1.10",
+  "settings": {
+    "defaultLanguage": "en",
+    "languages": [
+      "en"
+    ],
+    "description": "",
+    "id": "91f131c5-1e85-4367-b556-881054d40565",
+    "inactivityTimeout": 30,
+    "botVariables": [],
+    "userVariables": [],
+    "nodeRepetitionLimit": 3,
+    "configVariables": {},
+    "cognitiveConfigs": {
+      "openAi": {}
+    }
+  },
+  "flows": [
+    {
+      "id": "wf-error",
+      "name": "Error",
+      "startNode": "nd-98dc0bcc87",
+      "variables": [],
+      "links": [
+        {
+          "id": "edg-1cb5862648",
+          "source": "nd-98dc0bcc87",
+          "sourcePort": "trs-02c7129430",
+          "target": "nd-58fca56e01"
+        },
+        {
+          "id": "edg-1c28c96d6a",
+          "source": "nd-58fca56e01",
+          "sourcePort": "nd-58fca56e01",
+          "target": "nd-e05f59dd66"
+        }
+      ],
+      "nodes": [
+        {
+          "comment": "<p><strong><span style=\"font-size: 18px\">⛔️ When something goes wrong</span></strong></p><p><br>This workflow is executed when there's an <strong>unexpected error</strong> in one of the other workflows.</p><p></p><p>You can use this to inform the user of the situation before ending the conversation.</p>",
+          "type": "comment",
+          "id": "nd-8ff3d7d295",
+          "name": "Comment1",
+          "deletable": true,
+          "instructions": [],
+          "height": 148,
+          "width": 401,
+          "x": 90,
+          "y": -45
+        },
+        {
+          "instructions": [
+            {
+              "id": "ins-2762f70004",
+              "type": "content",
+              "content": {
+                "type": "text",
+                "text": {
+                  "staticValue": "Sorry, an error occurred. Please try again later",
+                  "dynamicValue": "",
+                  "valueType": "static"
+                },
+                "typing": {
+                  "valueType": "static",
+                  "staticValue": true
+                }
+              },
+              "nodeId": "nd-58fca56e01"
+            }
+          ],
+          "defaultTransition": {
+            "targetNodeId": "nd-e05f59dd66"
+          },
+          "type": "standard",
+          "id": "nd-58fca56e01",
+          "name": "Handler",
+          "deletable": true,
+          "x": 450,
+          "y": 120
+        },
+        {
+          "id": "nd-98dc0bcc87",
+          "name": "On_Error",
+          "type": "entry",
+          "deletable": false,
+          "variables": [],
+          "instructions": [
+            {
+              "id": "trs-02c7129430",
+              "type": "transition",
+              "condition": {
+                "type": "expression",
+                "payload": "true"
+              },
+              "destination": {
+                "node": "nd-58fca56e01"
+              }
+            }
+          ],
+          "x": 90,
+          "y": 120
+        },
+        {
+          "id": "nd-e05f59dd66",
+          "name": "End",
+          "type": "end",
+          "variables": [],
+          "deletable": false,
+          "instructions": [
+            {
+              "id": "trs-945140a646",
+              "type": "transition",
+              "condition": {
+                "type": "expression",
+                "payload": "true"
+              },
+              "destination": {
+                "node": "END"
+              }
+            }
+          ],
+          "x": 810,
+          "y": 120
+        }
+      ]
+    },
+    {
+      "id": "wf-timeout",
+      "name": "Timeout",
+      "startNode": "nd-9f7f3268ac",
+      "variables": [],
+      "links": [
+        {
+          "id": "edg-b0d2adcd13",
+          "source": "nd-e6c012a652",
+          "sourcePort": "nd-e6c012a652",
+          "target": "nd-199fdcf439"
+        },
+        {
+          "id": "edg-6d17a0591b",
+          "source": "nd-9f7f3268ac",
+          "sourcePort": "trs-0c7a9a0003",
+          "target": "nd-e6c012a652"
+        }
+      ],
+      "nodes": [
+        {
+          "instructions": [],
+          "defaultTransition": {
+            "targetNodeId": "nd-199fdcf439"
+          },
+          "type": "standard",
+          "id": "nd-e6c012a652",
+          "name": "Handler",
+          "deletable": true,
+          "x": 435,
+          "y": 105
+        },
+        {
+          "comment": "<p><strong><span style=\"font-size: 18px\">⌛️ When conversation times out</span></strong></p><p><br>This workflow is executed when the conversation <strong>times out</strong> before it had time to flow to an <strong>End Node</strong>.</p><p></p><p>The <strong>Timeout Delay</strong> is configurable in the <strong>Chatbot Settings.</strong></p><p></p><p>You can use this to inform the user of the situation before ending the conversation.</p>",
+          "type": "comment",
+          "id": "nd-441efa6c42",
+          "name": "Comment1",
+          "deletable": true,
+          "instructions": [],
+          "height": 173,
+          "width": 401,
+          "x": 105,
+          "y": -90
+        },
+        {
+          "id": "nd-9f7f3268ac",
+          "name": "On_Timeout",
+          "type": "entry",
+          "deletable": false,
+          "variables": [],
+          "instructions": [
+            {
+              "id": "trs-0c7a9a0003",
+              "type": "transition",
+              "condition": {
+                "type": "expression",
+                "payload": "true"
+              },
+              "destination": {
+                "node": "nd-e6c012a652"
+              }
+            }
+          ],
+          "x": 100,
+          "y": 100
+        },
+        {
+          "id": "nd-199fdcf439",
+          "name": "End",
+          "type": "end",
+          "variables": [],
+          "deletable": false,
+          "instructions": [
+            {
+              "id": "trs-bf76943d55",
+              "type": "transition",
+              "condition": {
+                "type": "expression",
+                "payload": "true"
+              },
+              "destination": {
+                "node": "END"
+              }
+            }
+          ],
+          "x": 795,
+          "y": 105
+        }
+      ]
+    },
+    {
+      "id": "wf-conversation-end",
+      "name": "Conversation End",
+      "startNode": "nd-c0d3bd2c92",
+      "variables": [],
+      "links": [
+        {
+          "id": "edg-3cb8028ff6",
+          "source": "nd-c0d3bd2c92",
+          "sourcePort": "trs-92c6f93b0c",
+          "target": "nd-2db7499cc6"
+        },
+        {
+          "id": "edg-8a88f687a0",
+          "source": "nd-2db7499cc6",
+          "sourcePort": "nd-2db7499cc6",
+          "target": "nd-d0c2a6be81"
+        }
+      ],
+      "nodes": [
+        {
+          "instructions": [],
+          "defaultTransition": {
+            "targetNodeId": "nd-d0c2a6be81"
+          },
+          "type": "standard",
+          "id": "nd-2db7499cc6",
+          "name": "Handler",
+          "deletable": true,
+          "x": 420,
+          "y": 105
+        },
+        {
+          "comment": "<p><strong><span style=\"font-size: 18px\">👋 Before Conversation Ends</span></strong></p><p><br>This workflow is executed when right before the conversation <strong>Ends Explicitly.</strong></p><p></p><p>An <strong>Explicit Ending</strong> happens when a workflow transitions on an <strong>End Node</strong>.</p>",
+          "type": "comment",
+          "id": "nd-6d5d3f41dd",
+          "name": "Comment1",
+          "deletable": true,
+          "instructions": [],
+          "height": 148,
+          "width": 461,
+          "x": 105,
+          "y": -45
+        },
+        {
+          "id": "nd-c0d3bd2c92",
+          "name": "On_Explicit_Ending",
+          "type": "entry",
+          "deletable": false,
+          "variables": [],
+          "instructions": [
+            {
+              "id": "trs-92c6f93b0c",
+              "type": "transition",
+              "condition": {
+                "type": "expression",
+                "payload": "true"
+              },
+              "destination": {
+                "node": "nd-2db7499cc6"
+              }
+            }
+          ],
+          "x": 100,
+          "y": 100
+        },
+        {
+          "id": "nd-d0c2a6be81",
+          "name": "End",
+          "type": "end",
+          "variables": [],
+          "deletable": false,
+          "instructions": [
+            {
+              "id": "trs-7004dbb2b6",
+              "type": "transition",
+              "condition": {
+                "type": "expression",
+                "payload": "true"
+              },
+              "destination": {
+                "node": "END"
+              }
+            }
+          ],
+          "x": 780,
+          "y": 105
+        }
+      ]
+    },
+    {
+      "topicId": "tpc-global",
+      "id": "wf-main",
+      "name": "Main",
+      "startNode": "nd-2bb9db230d",
+      "variables": [
+        {
+          "id": "var-86427a689d",
+          "name": "userinput",
+          "type": "string",
+          "description": "",
+          "scope": "workflow"
+        },
+        {
+          "id": "var-184a2e73f1",
+          "name": "userprompt",
+          "type": "string",
+          "description": "",
+          "scope": "workflow"
+        },
+        {
+          "id": "var-a232c6d3c7",
+          "name": "userpromptoutput",
+          "type": "string",
+          "description": "",
+          "scope": "workflow"
+        },
+        {
+          "id": "var-07f0caf8cc",
+          "name": "useroutput",
+          "type": "string",
+          "description": "",
+          "scope": "workflow"
+        }
+      ],
+      "links": [
+        {
+          "id": "edg-b26f9018a5",
+          "source": "nd-3eda89baaa",
+          "sourcePort": "trs-91db3f106e",
+          "target": "nd-e8c9f38e5b"
+        },
+        {
+          "id": "edg-6fafb3fa28",
+          "source": "nd-2bb9db230d",
+          "sourcePort": "trs-8b0779edc5",
+          "target": "nd-e8c9f38e5b"
+        },
+        {
+          "id": "edg-b7cf6c9f54",
+          "source": "nd-e8c9f38e5b",
+          "sourcePort": "ins-a75b4d48a7",
+          "target": "nd-f3cdf0f6e6"
+        },
+        {
+          "id": "edg-2928878d65",
+          "source": "nd-f3cdf0f6e6",
+          "sourcePort": "trs-3f01675c70",
+          "target": "nd-e6dbee7b56"
+        },
+        {
+          "id": "edg-1e500384fe",
+          "source": "nd-9417ab889e",
+          "sourcePort": "nd-9417ab889e",
+          "target": "nd-6c88eb0444"
+        },
+        {
+          "id": "edg-2b8711abf9",
+          "source": "nd-e6dbee7b56",
+          "sourcePort": "trs-7da0859b18",
+          "target": "nd-e6dbee7b56"
+        },
+        {
+          "id": "edg-eb70f9f9f0",
+          "source": "nd-64db317fd4",
+          "sourcePort": "trs-f6e319ac7e",
+          "target": "nd-70ab1d8946"
+        },
+        {
+          "id": "edg-8367d7350e",
+          "source": "nd-70ab1d8946",
+          "sourcePort": "nd-70ab1d8946",
+          "target": "nd-80ac4ff158"
+        },
+        {
+          "id": "edg-38972d00e2",
+          "source": "nd-e6dbee7b56",
+          "sourcePort": "nd-e6dbee7b56",
+          "target": "nd-6c88eb0444"
+        },
+        {
+          "id": "edg-e4c8d5b5fb",
+          "source": "nd-e6dbee7b56",
+          "sourcePort": "trs-de693b0bd3",
+          "target": "nd-9417ab889e"
+        },
+        {
+          "id": "edg-315338aa85",
+          "source": "nd-6c88eb0444",
+          "sourcePort": "nd-6c88eb0444",
+          "target": "nd-64db317fd4"
+        },
+        {
+          "id": "edg-fc574e753b",
+          "source": "nd-6c88eb0444",
+          "sourcePort": "ins-b79d63ddf4",
+          "target": "nd-70ab1d8946"
+        },
+        {
+          "id": "edg-60b633e003",
+          "source": "nd-64db317fd4",
+          "sourcePort": "nd-64db317fd4",
+          "target": "nd-70ab1d8946"
+        },
+        {
+          "id": "edg-ebbf0d93e1",
+          "source": "nd-f3cdf0f6e6",
+          "sourcePort": "trs-57f6a031a2",
+          "target": "nd-70ab1d8946"
+        },
+        {
+          "id": "edg-e274228543",
+          "source": "nd-e6dbee7b56",
+          "sourcePort": "trs-0af03e4f9b",
+          "target": "nd-70ab1d8946"
+        },
+        {
+          "id": "edg-9b9b98bf71",
+          "source": "nd-64db317fd4",
+          "sourcePort": "trs-6c0fb594e9",
+          "target": "nd-9417ab889e"
+        }
+      ],
+      "nodes": [
+        {
+          "instructions": [
+            {
+              "id": "ins-edc9a2e393",
+              "type": "content",
+              "content": {
+                "type": "card",
+                "title": {
+                  "valueType": "dynamic",
+                  "dynamicValue": "HAVE A NICE DAY",
+                  "staticValue": ""
+                },
+                "imageUrl": {
+                  "staticValue": "https://s3.us-east-1.amazonaws.com/cloud-studio-botsbca2d619-1916w6llinepa/91f131c5-1e85-4367-b556-881054d40565/media/cf00a83e-202a-4371-8928-59f68baeee2b.png",
+                  "valueType": "static"
+                },
+                "actions": {
+                  "valueType": "static",
+                  "staticValue": [],
+                  "isExpression": true
+                }
+              },
+              "nodeId": "nd-70ab1d8946"
+            }
+          ],
+          "defaultTransition": {
+            "targetNodeId": "nd-80ac4ff158"
+          },
+          "type": "standard",
+          "id": "nd-70ab1d8946",
+          "name": "Standard1",
+          "deletable": true,
+          "x": 2490,
+          "y": -90
+        },
+        {
+          "instructions": [
+            {
+              "type": "ai-generate",
+              "id": "ins-6c17129348",
+              "task": {
+                "model": "gpt-3.5-turbo-16k",
+                "temperature": 0.2,
+                "input": {
+                  "staticValue": null,
+                  "valueType": "dynamic",
+                  "dynamicValue": "@workflow.userinput "
+                },
+                "outputVariableId": "var-07f0caf8cc",
+                "maxTokenLength": {
+                  "staticValue": 4000,
+                  "valueType": "static",
+                  "dynamicValue": ""
+                }
+              },
+              "nodeId": "nd-64db317fd4",
+              "prompt": {
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "Answer the following prompt in under {{GENERATION_LENGTH}} completion tokens.\nPrompt:{{GENERATION_INPUT}}"
+                  }
+                ],
+                "model": "gpt-3.5-turbo-16k",
+                "signatureVersion": "Jun-2023",
+                "temperature": 0.2,
+                "signature": "GUu+BoACchMaB4AhLklUS+yHqCVlSryiRj+h2sV3yUzokR/Tj/W42Sx2EsSL4/wl+BxD+VWlR2Vrydc1sWFbcHt17LCYYPSMKK72dD31YGAHlVS4MrLIGLiDxTXE6/9DFJwTJCwuucEErwBUEd75ggASVtUpd/xiUGlAs3ve6hRJflU2IG7oDg8lbb4fJ92C2LTFBBqonSQNGt/pAo9Mmzd/U6goS+jGZjcMLuZ8tXnvLXBkmorW3RD4LAyfIy6kpi+N3l+JeSSqaXOBUf7sXFbWTaPXcUF3VeIfoRsaQkuZaycjZRIPYZUEcYXrIug+V7SLUAvqcHe6N3arUcjyGw=="
+              }
+            },
+            {
+              "id": "ins-ada03bc141",
+              "type": "content",
+              "content": {
+                "type": "text",
+                "text": {
+                  "valueType": "dynamic",
+                  "dynamicValue": "@workflow.useroutput ",
+                  "staticValue": ""
+                },
+                "typing": {
+                  "valueType": "static",
+                  "staticValue": true
+                }
+              },
+              "nodeId": "nd-64db317fd4",
+              "target": null
+            },
+            {
+              "id": "ins-9f45b29107",
+              "type": "capture",
+              "entityId": "prompts://SingleChoice/v1",
+              "entityName": "Single Choice",
+              "kbPriority": {
+                "enabled": true,
+                "searchScope": "all",
+                "kbs": []
+              },
+              "nodeId": "nd-64db317fd4",
+              "question": {
+                "staticValue": "",
+                "dynamicValue": "Anything else?",
+                "valueType": "dynamic"
+              },
+              "validation": {
+                "validators": []
+              },
+              "choice": {
+                "options": {
+                  "valueType": "static",
+                  "staticValue": [
+                    {
+                      "label": {
+                        "valueType": "dynamic",
+                        "dynamicValue": "Yes",
+                        "staticValue": null
+                      },
+                      "value": "Yes",
+                      "enabled": true
+                    },
+                    {
+                      "label": {
+                        "valueType": "dynamic",
+                        "dynamicValue": "That's It ",
+                        "staticValue": null
+                      },
+                      "value": "That's It ",
+                      "enabled": true
+                    }
+                  ],
+                  "dynamicValue": ""
+                }
+              },
+              "retry": {
+                "maxRetries": 2,
+                "retryMessage": {
+                  "staticValue": "",
+                  "dynamicValue": "",
+                  "valueType": "dynamic"
+                }
+              },
+              "cancellation": {
+                "cancellable": true,
+                "confirmCancel": true,
+                "confirmCancelMessage": {
+                  "staticValue": "",
+                  "dynamicValue": "",
+                  "valueType": "static"
+                }
+              },
+              "handleFailure": false,
+              "historyLookback": 0,
+              "skipIfAlreadyFilled": false,
+              "transitions": [
+                {
+                  "id": "trs-6c0fb594e9",
+                  "type": "transition",
+                  "label": "Yes",
+                  "condition": {
+                    "type": "expression",
+                    "payload": "__CHOICE=Yes"
+                  },
+                  "destination": {
+                    "node": "nd-9417ab889e"
+                  }
+                },
+                {
+                  "id": "trs-f6e319ac7e",
+                  "type": "transition",
+                  "label": "That's It ",
+                  "condition": {
+                    "type": "expression",
+                    "payload": "__CHOICE=That's It "
+                  },
+                  "destination": {
+                    "node": "nd-70ab1d8946"
+                  }
+                }
+              ],
+              "prompt": {
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "You are ExtractGPT and your only goal is to generate useful content in JSON format for developers to parse and use. You don't know any other language than JSON."
+                  },
+                  {
+                    "role": "user",
+                    "content": "```typescript\n/** The user answer to the question \"Which one would you like? Choices: [ 1) Red Apple, 2) Yellow Apple, 3) Dark Banana ]\" */\ninterface Output = { choice: {{CHOICES_TYPINGS}} }\n```\n\nHere is a conversation between me and a user. Transcript:\n\"\"\"\n(...)\nagent: Which one would you like? Choices: [ 1) Red Apple, 2) Yellow Apple, 3) Dark Banana ]\nuser: I will go with the second one please\n\"\"\""
+                  },
+                  {
+                    "role": "assistant",
+                    "content": "{\"choice\":\"Yellow Apple\"}"
+                  },
+                  {
+                    "role": "user",
+                    "content": "\nNow, forget about the previous transcripts. These were just examples, don't consider those as valid transcripts for this new task.\n\n###\n\nThe current Date is {{CURRENT_DATE_TIME}}.\n\nAt this point of the conversation, I need require the user to fill the output in following JSON output to complete the task.\nIf more than one property, try to extract each of them the best you can.\n\n```typescript\n/** The user answer to the question \"{{QUESTION}}\" */\ninterface Output = { choice: {{CHOICES_TYPINGS}} }\n```\n\nHere is a conversation between me and a user. Transcript:\n\"\"\"\n(...)\n{{TRANSCRIPT}}\n\"\"\"\n\nIn the last user message, here are the entities found:\n\"\"\"\nENTITIES_IDENTIFIED\n\"\"\"\n\nI need you to extract from the conversation transcript above the values the user has provided.\nIf the user has not provided the information I need, I need you to set the value of the missing answer properties to null.\nHave some tolerance to typos and variations in how the user selects from the possible values.\n\n\n\nNow, please reply to me with the above JSON output and nothing but JSON.\nYou should not explain your answer and should not talk back to me. Just JSON."
+                  }
+                ],
+                "model": "gpt-3.5-turbo",
+                "temperature": 0,
+                "signatureVersion": "Jun-2023",
+                "signature": "bVu49Pre5q6DHlBFHgwm9WRpKblGPBZEVz9lE1T/kSknjafz8d4zyUGOUmre70ijj2brtSymiTuHw41rgUeoCl/HXkA3kpomvC1RU1QBili6tzgAvH+4CC1PGSL/kP+71QgVkqv73DXrN1UAAH60wru/Oc8nuHvtTKxeoghxZzkmwKpFWq9L8Appklcjf5Pr+4N2Q9JQtxsr4D2+SSc7cCBec71TQVpOxhmPHfxaaKfgzGV4PZbUFI0JZEkmMppHHz+6iTlkoeWG45ukpCwCw7ppjnps4TYI/bR2gWVOyN9J3mVYmZoH7pNY7UWjd/mB+HjubAfZAeNF7FXvVKzcrA=="
+              }
+            }
+          ],
+          "defaultTransition": {
+            "targetNodeId": "nd-70ab1d8946"
+          },
+          "type": "standard",
+          "id": "nd-64db317fd4",
+          "name": "AI",
+          "deletable": true,
+          "x": 1950,
+          "y": -30
+        },
+        {
+          "instructions": [
+            {
+              "id": "ins-b79d63ddf4",
+              "type": "transition",
+              "condition": {
+                "type": "expression",
+                "payload": "!bot.KnowlegeAgent.responded"
+              },
+              "label": "!turn KnowlegeAgent.responded",
+              "generative": {
+                "label": "!turn KnowlegeAgent.responded",
+                "suggestion": {
+                  "condition": "!bot.KnowlegeAgent.responded"
+                },
+                "properties": {
+                  "condition": true
+                }
+              },
+              "nodeId": "nd-6c88eb0444",
+              "destination": {
+                "node": "nd-70ab1d8946"
+              }
+            }
+          ],
+          "defaultTransition": {
+            "targetNodeId": "nd-64db317fd4"
+          },
+          "type": "standard",
+          "id": "nd-6c88eb0444",
+          "name": "Prompting",
+          "deletable": true,
+          "x": 2100,
+          "y": -705
+        },
+        {
+          "instructions": [
+            {
+              "id": "ins-72fb09046f",
+              "type": "capture",
+              "entityId": "prompts://RawInput/v1",
+              "entityName": "Raw Input",
+              "kbPriority": {
+                "enabled": true,
+                "searchScope": "all",
+                "kbs": []
+              },
+              "nodeId": "nd-9417ab889e",
+              "variableId": "var-86427a689d",
+              "question": {
+                "staticValue": "",
+                "dynamicValue": "Okay Bring It On !",
+                "valueType": "dynamic"
+              },
+              "validation": {
+                "validators": []
+              },
+              "choice": {
+                "options": {
+                  "staticValue": [],
+                  "dynamicValue": "",
+                  "valueType": "static"
+                }
+              },
+              "retry": {
+                "maxRetries": 2,
+                "retryMessage": {
+                  "staticValue": "",
+                  "dynamicValue": "",
+                  "valueType": "dynamic"
+                }
+              },
+              "cancellation": {
+                "cancellable": true,
+                "confirmCancel": true,
+                "confirmCancelMessage": {
+                  "staticValue": "",
+                  "dynamicValue": "",
+                  "valueType": "static"
+                }
+              },
+              "handleFailure": false,
+              "historyLookback": 0,
+              "skipIfAlreadyFilled": false,
+              "transitions": [],
+              "prompt": {
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "You are ExtractGPT and your only goal is to generate useful content in JSON format for developers to parse and use. You don't know any other language than JSON."
+                  },
+                  {
+                    "role": "user",
+                    "content": "```typescript\n/** The user answer to the question \"undefined\" */\ninterface Output = { value: any }\n```\n\nHere is a conversation between me and a user. Transcript:\n\"\"\"\n(...)\nagent: undefined\nuser: undefined\n\"\"\""
+                  },
+                  {
+                    "role": "assistant",
+                    "content": "{}"
+                  },
+                  {
+                    "role": "user",
+                    "content": "\nNow, forget about the previous transcripts. These were just examples, don't consider those as valid transcripts for this new task.\n\n###\n\nThe current Date is {{CURRENT_DATE_TIME}}.\n\nAt this point of the conversation, I need require the user to fill the output in following JSON output to complete the task.\nIf more than one property, try to extract each of them the best you can.\n\n```typescript\n/** The user answer to the question \"{{QUESTION}}\" */\ninterface Output = { value: any }\n```\n\nHere is a conversation between me and a user. Transcript:\n\"\"\"\n(...)\n{{TRANSCRIPT}}\n\"\"\"\n\nIn the last user message, here are the entities found:\n\"\"\"\nENTITIES_IDENTIFIED\n\"\"\"\n\nI need you to extract from the conversation transcript above the values the user has provided.\nIf the user has not provided the information I need, I need you to set the value of the missing answer properties to null.\nHave some tolerance to typos and variations in how the user selects from the possible values.\n\n\n\nNow, please reply to me with the above JSON output and nothing but JSON.\nYou should not explain your answer and should not talk back to me. Just JSON."
+                  }
+                ],
+                "model": "gpt-3.5-turbo",
+                "temperature": 0,
+                "signatureVersion": "Jun-2023",
+                "signature": "wsDIMaSsJ1YTaWLaNEaV5IgB+C2qyh801nUa4CdCsmubxvThog1rJ7tYXwHKDnA4cpOm6gnznXN6AdKJSoh/tbRxO1abxj04bRbCn9y7BZ8i3qZQl1Le5PIaAmfampxeHFl8IasZNZYi5uWVQnd1IPS3iFv6wYhBGa/EPlz+AagSKdqmn11u/DSAfrYixnA2rW+XEORrVeVMt1P8zFU7ssoTSSNt7LZh1xmH0amoWFad2vSDxu/2eU55NZSGFlB8a1soPEGYq83QN6mHXldjsO1mEV7cHWsSBZPTXG37GipXEbYKe/9sQNwg6mpBLIuvbliiJ9DvjkkSyXQVkVhTyg=="
+              }
+            }
+          ],
+          "defaultTransition": {
+            "targetNodeId": "nd-6c88eb0444"
+          },
+          "type": "standard",
+          "id": "nd-9417ab889e",
+          "name": "Question_2",
+          "deletable": true,
+          "x": 1785,
+          "y": -405
+        },
+        {
+          "instructions": [
+            {
+              "id": "ins-f8fc8c1deb",
+              "type": "capture",
+              "entityId": "prompts://RawInput/v1",
+              "entityName": "Raw Input",
+              "kbPriority": {
+                "enabled": true,
+                "searchScope": "all",
+                "kbs": []
+              },
+              "nodeId": "nd-e6dbee7b56",
+              "variableId": "var-86427a689d",
+              "question": {
+                "staticValue": "",
+                "dynamicValue": "How can I assist you today?",
+                "valueType": "dynamic"
+              },
+              "validation": {
+                "validators": []
+              },
+              "choice": {
+                "options": {
+                  "staticValue": [],
+                  "dynamicValue": "",
+                  "valueType": "static"
+                }
+              },
+              "retry": {
+                "maxRetries": 2,
+                "retryMessage": {
+                  "staticValue": "",
+                  "dynamicValue": "",
+                  "valueType": "dynamic"
+                }
+              },
+              "cancellation": {
+                "cancellable": true,
+                "confirmCancel": true,
+                "confirmCancelMessage": {
+                  "staticValue": "",
+                  "dynamicValue": "",
+                  "valueType": "static"
+                }
+              },
+              "handleFailure": false,
+              "historyLookback": 0,
+              "skipIfAlreadyFilled": false,
+              "transitions": [],
+              "prompt": {
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "You are ExtractGPT and your only goal is to generate useful content in JSON format for developers to parse and use. You don't know any other language than JSON."
+                  },
+                  {
+                    "role": "user",
+                    "content": "```typescript\n/** The user answer to the question \"undefined\" */\ninterface Output = { value: any }\n```\n\nHere is a conversation between me and a user. Transcript:\n\"\"\"\n(...)\nagent: undefined\nuser: undefined\n\"\"\""
+                  },
+                  {
+                    "role": "assistant",
+                    "content": "{}"
+                  },
+                  {
+                    "role": "user",
+                    "content": "\nNow, forget about the previous transcripts. These were just examples, don't consider those as valid transcripts for this new task.\n\n###\n\nThe current Date is {{CURRENT_DATE_TIME}}.\n\nAt this point of the conversation, I need require the user to fill the output in following JSON output to complete the task.\nIf more than one property, try to extract each of them the best you can.\n\n```typescript\n/** The user answer to the question \"{{QUESTION}}\" */\ninterface Output = { value: any }\n```\n\nHere is a conversation between me and a user. Transcript:\n\"\"\"\n(...)\n{{TRANSCRIPT}}\n\"\"\"\n\nIn the last user message, here are the entities found:\n\"\"\"\nENTITIES_IDENTIFIED\n\"\"\"\n\nI need you to extract from the conversation transcript above the values the user has provided.\nIf the user has not provided the information I need, I need you to set the value of the missing answer properties to null.\nHave some tolerance to typos and variations in how the user selects from the possible values.\n\n\n\nNow, please reply to me with the above JSON output and nothing but JSON.\nYou should not explain your answer and should not talk back to me. Just JSON."
+                  }
+                ],
+                "model": "gpt-3.5-turbo",
+                "temperature": 0,
+                "signatureVersion": "Jun-2023",
+                "signature": "wsDIMaSsJ1YTaWLaNEaV5IgB+C2qyh801nUa4CdCsmubxvThog1rJ7tYXwHKDnA4cpOm6gnznXN6AdKJSoh/tbRxO1abxj04bRbCn9y7BZ8i3qZQl1Le5PIaAmfampxeHFl8IasZNZYi5uWVQnd1IPS3iFv6wYhBGa/EPlz+AagSKdqmn11u/DSAfrYixnA2rW+XEORrVeVMt1P8zFU7ssoTSSNt7LZh1xmH0amoWFad2vSDxu/2eU55NZSGFlB8a1soPEGYq83QN6mHXldjsO1mEV7cHWsSBZPTXG37GipXEbYKe/9sQNwg6mpBLIuvbliiJ9DvjkkSyXQVkVhTyg=="
+              }
+            },
+            {
+              "id": "ins-7a0165153c",
+              "type": "capture",
+              "entityId": "prompts://SingleChoice/v1",
+              "entityName": "Single Choice",
+              "kbPriority": {
+                "enabled": true,
+                "searchScope": "all",
+                "kbs": []
+              },
+              "nodeId": "nd-e6dbee7b56",
+              "question": {
+                "valueType": "dynamic",
+                "dynamicValue": "Do You Have Any Other Question?",
+                "staticValue": ""
+              },
+              "validation": {
+                "validators": []
+              },
+              "choice": {
+                "options": {
+                  "valueType": "static",
+                  "staticValue": [
+                    {
+                      "label": {
+                        "valueType": "dynamic",
+                        "dynamicValue": "Yes",
+                        "staticValue": null
+                      },
+                      "value": "Yes",
+                      "enabled": true
+                    },
+                    {
+                      "label": {
+                        "valueType": "dynamic",
+                        "dynamicValue": "No",
+                        "staticValue": null
+                      },
+                      "value": "No",
+                      "enabled": true
+                    },
+                    {
+                      "label": {
+                        "valueType": "dynamic",
+                        "dynamicValue": "Move On",
+                        "staticValue": null
+                      },
+                      "value": "Move On",
+                      "enabled": true
+                    }
+                  ],
+                  "dynamicValue": ""
+                }
+              },
+              "retry": {
+                "maxRetries": 2,
+                "retryMessage": {
+                  "staticValue": "",
+                  "dynamicValue": "",
+                  "valueType": "dynamic"
+                }
+              },
+              "cancellation": {
+                "cancellable": true,
+                "confirmCancel": true,
+                "confirmCancelMessage": {
+                  "staticValue": "",
+                  "dynamicValue": "",
+                  "valueType": "static"
+                }
+              },
+              "handleFailure": false,
+              "historyLookback": 0,
+              "skipIfAlreadyFilled": false,
+              "transitions": [
+                {
+                  "id": "trs-7da0859b18",
+                  "type": "transition",
+                  "label": "Yes",
+                  "condition": {
+                    "type": "expression",
+                    "payload": "__CHOICE=Yes"
+                  },
+                  "destination": {
+                    "node": "nd-e6dbee7b56"
+                  }
+                },
+                {
+                  "id": "trs-0af03e4f9b",
+                  "type": "transition",
+                  "label": "No",
+                  "condition": {
+                    "type": "expression",
+                    "payload": "__CHOICE=No"
+                  },
+                  "destination": {
+                    "node": "nd-70ab1d8946"
+                  }
+                },
+                {
+                  "id": "trs-de693b0bd3",
+                  "type": "transition",
+                  "label": "Move On",
+                  "condition": {
+                    "type": "expression",
+                    "payload": "__CHOICE=Move On"
+                  },
+                  "destination": {
+                    "node": "nd-9417ab889e"
+                  }
+                }
+              ],
+              "prompt": {
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "You are ExtractGPT and your only goal is to generate useful content in JSON format for developers to parse and use. You don't know any other language than JSON."
+                  },
+                  {
+                    "role": "user",
+                    "content": "```typescript\n/** The user answer to the question \"Which one would you like? Choices: [ 1) Red Apple, 2) Yellow Apple, 3) Dark Banana ]\" */\ninterface Output = { choice: {{CHOICES_TYPINGS}} }\n```\n\nHere is a conversation between me and a user. Transcript:\n\"\"\"\n(...)\nagent: Which one would you like? Choices: [ 1) Red Apple, 2) Yellow Apple, 3) Dark Banana ]\nuser: I will go with the second one please\n\"\"\""
+                  },
+                  {
+                    "role": "assistant",
+                    "content": "{\"choice\":\"Yellow Apple\"}"
+                  },
+                  {
+                    "role": "user",
+                    "content": "\nNow, forget about the previous transcripts. These were just examples, don't consider those as valid transcripts for this new task.\n\n###\n\nThe current Date is {{CURRENT_DATE_TIME}}.\n\nAt this point of the conversation, I need require the user to fill the output in following JSON output to complete the task.\nIf more than one property, try to extract each of them the best you can.\n\n```typescript\n/** The user answer to the question \"{{QUESTION}}\" */\ninterface Output = { choice: {{CHOICES_TYPINGS}} }\n```\n\nHere is a conversation between me and a user. Transcript:\n\"\"\"\n(...)\n{{TRANSCRIPT}}\n\"\"\"\n\nIn the last user message, here are the entities found:\n\"\"\"\nENTITIES_IDENTIFIED\n\"\"\"\n\nI need you to extract from the conversation transcript above the values the user has provided.\nIf the user has not provided the information I need, I need you to set the value of the missing answer properties to null.\nHave some tolerance to typos and variations in how the user selects from the possible values.\n\n\n\nNow, please reply to me with the above JSON output and nothing but JSON.\nYou should not explain your answer and should not talk back to me. Just JSON."
+                  }
+                ],
+                "model": "gpt-3.5-turbo",
+                "temperature": 0,
+                "signatureVersion": "Jun-2023",
+                "signature": "bVu49Pre5q6DHlBFHgwm9WRpKblGPBZEVz9lE1T/kSknjafz8d4zyUGOUmre70ijj2brtSymiTuHw41rgUeoCl/HXkA3kpomvC1RU1QBili6tzgAvH+4CC1PGSL/kP+71QgVkqv73DXrN1UAAH60wru/Oc8nuHvtTKxeoghxZzkmwKpFWq9L8Appklcjf5Pr+4N2Q9JQtxsr4D2+SSc7cCBec71TQVpOxhmPHfxaaKfgzGV4PZbUFI0JZEkmMppHHz+6iTlkoeWG45ukpCwCw7ppjnps4TYI/bR2gWVOyN9J3mVYmZoH7pNY7UWjd/mB+HjubAfZAeNF7FXvVKzcrA=="
+              }
+            }
+          ],
+          "defaultTransition": {
+            "targetNodeId": "nd-6c88eb0444"
+          },
+          "type": "standard",
+          "id": "nd-e6dbee7b56",
+          "name": "Question",
+          "deletable": true,
+          "x": 1020,
+          "y": -465
+        },
+        {
+          "instructions": [
+            {
+              "id": "ins-35c805f379",
+              "type": "content",
+              "content": {
+                "type": "carousel",
+                "items": [
+                  {
+                    "type": "card",
+                    "title": {
+                      "valueType": "dynamic",
+                      "dynamicValue": "Features",
+                      "staticValue": ""
+                    },
+                    "subtitle": {
+                      "staticValue": "",
+                      "valueType": "static"
+                    },
+                    "imageUrl": {
+                      "staticValue": "https://s3.us-east-1.amazonaws.com/cloud-studio-botsbca2d619-1916w6llinepa/91f131c5-1e85-4367-b556-881054d40565/media/1a2b2fde-a307-4993-9b4a-d2e092ec5284.jpeg",
+                      "valueType": "static"
+                    },
+                    "actions": {
+                      "valueType": "static",
+                      "staticValue": [],
+                      "isExpression": true
+                    }
+                  },
+                  {
+                    "type": "card",
+                    "title": {
+                      "valueType": "dynamic",
+                      "dynamicValue": "Easy To Use",
+                      "staticValue": ""
+                    },
+                    "subtitle": {
+                      "staticValue": "",
+                      "valueType": "static"
+                    },
+                    "imageUrl": {
+                      "staticValue": "https://s3.us-east-1.amazonaws.com/cloud-studio-botsbca2d619-1916w6llinepa/91f131c5-1e85-4367-b556-881054d40565/media/01420704-3d3a-493e-a2cf-130d2bab4f1a.jpeg",
+                      "valueType": "static"
+                    },
+                    "actions": {
+                      "valueType": "static",
+                      "staticValue": [],
+                      "isExpression": true
+                    }
+                  },
+                  {
+                    "type": "card",
+                    "title": {
+                      "valueType": "dynamic",
+                      "dynamicValue": "Real Time Assistance",
+                      "staticValue": ""
+                    },
+                    "subtitle": {
+                      "staticValue": "",
+                      "valueType": "static"
+                    },
+                    "imageUrl": {
+                      "staticValue": "https://s3.us-east-1.amazonaws.com/cloud-studio-botsbca2d619-1916w6llinepa/91f131c5-1e85-4367-b556-881054d40565/media/c78042a6-e577-4683-9034-8a4f4243bcb5.jpeg",
+                      "valueType": "static"
+                    },
+                    "actions": {
+                      "valueType": "static",
+                      "staticValue": [],
+                      "isExpression": true
+                    }
+                  },
+                  {
+                    "type": "card",
+                    "title": {
+                      "valueType": "dynamic",
+                      "dynamicValue": "Dynamic",
+                      "staticValue": ""
+                    },
+                    "subtitle": {
+                      "staticValue": "",
+                      "valueType": "static"
+                    },
+                    "imageUrl": {
+                      "staticValue": "https://s3.us-east-1.amazonaws.com/cloud-studio-botsbca2d619-1916w6llinepa/91f131c5-1e85-4367-b556-881054d40565/media/206d8030-a707-479b-adf3-12e194c586e5.jpeg",
+                      "valueType": "static"
+                    },
+                    "actions": {
+                      "valueType": "static",
+                      "staticValue": [],
+                      "isExpression": true
+                    }
+                  }
+                ]
+              },
+              "nodeId": "nd-f3cdf0f6e6"
+            },
+            {
+              "id": "ins-379e975960",
+              "type": "capture",
+              "entityId": "prompts://SingleChoice/v1",
+              "entityName": "Single Choice",
+              "kbPriority": {
+                "enabled": true,
+                "searchScope": "all",
+                "kbs": []
+              },
+              "nodeId": "nd-f3cdf0f6e6",
+              "question": {
+                "staticValue": "",
+                "dynamicValue": "Let's Dive Deep into Wiki Editing ,Together ",
+                "valueType": "dynamic"
+              },
+              "validation": {
+                "validators": []
+              },
+              "choice": {
+                "options": {
+                  "valueType": "static",
+                  "staticValue": [
+                    {
+                      "label": {
+                        "valueType": "dynamic",
+                        "dynamicValue": "Sure, Let's Begin",
+                        "staticValue": null
+                      },
+                      "value": "Sure, Let's Begin",
+                      "enabled": true
+                    },
+                    {
+                      "label": {
+                        "valueType": "dynamic",
+                        "dynamicValue": "Maybe Later",
+                        "staticValue": null
+                      },
+                      "value": "Maybe Later",
+                      "enabled": true
+                    }
+                  ],
+                  "dynamicValue": ""
+                }
+              },
+              "retry": {
+                "maxRetries": 2,
+                "retryMessage": {
+                  "staticValue": "",
+                  "dynamicValue": "",
+                  "valueType": "dynamic"
+                }
+              },
+              "cancellation": {
+                "cancellable": true,
+                "confirmCancel": true,
+                "confirmCancelMessage": {
+                  "staticValue": "",
+                  "dynamicValue": "",
+                  "valueType": "static"
+                }
+              },
+              "handleFailure": false,
+              "historyLookback": 0,
+              "skipIfAlreadyFilled": false,
+              "transitions": [
+                {
+                  "id": "trs-3f01675c70",
+                  "type": "transition",
+                  "label": "Sure, Let's Begin",
+                  "condition": {
+                    "type": "expression",
+                    "payload": "__CHOICE=Sure, Let's Begin"
+                  },
+                  "destination": {
+                    "node": "nd-e6dbee7b56"
+                  }
+                },
+                {
+                  "id": "trs-57f6a031a2",
+                  "type": "transition",
+                  "label": "Maybe Later",
+                  "condition": {
+                    "type": "expression",
+                    "payload": "__CHOICE=Maybe Later"
+                  },
+                  "destination": {
+                    "node": "nd-70ab1d8946"
+                  }
+                }
+              ],
+              "prompt": {
+                "messages": [
+                  {
+                    "role": "system",
+                    "content": "You are ExtractGPT and your only goal is to generate useful content in JSON format for developers to parse and use. You don't know any other language than JSON."
+                  },
+                  {
+                    "role": "user",
+                    "content": "```typescript\n/** The user answer to the question \"Which one would you like? Choices: [ 1) Red Apple, 2) Yellow Apple, 3) Dark Banana ]\" */\ninterface Output = { choice: {{CHOICES_TYPINGS}} }\n```\n\nHere is a conversation between me and a user. Transcript:\n\"\"\"\n(...)\nagent: Which one would you like? Choices: [ 1) Red Apple, 2) Yellow Apple, 3) Dark Banana ]\nuser: I will go with the second one please\n\"\"\""
+                  },
+                  {
+                    "role": "assistant",
+                    "content": "{\"choice\":\"Yellow Apple\"}"
+                  },
+                  {
+                    "role": "user",
+                    "content": "\nNow, forget about the previous transcripts. These were just examples, don't consider those as valid transcripts for this new task.\n\n###\n\nThe current Date is {{CURRENT_DATE_TIME}}.\n\nAt this point of the conversation, I need require the user to fill the output in following JSON output to complete the task.\nIf more than one property, try to extract each of them the best you can.\n\n```typescript\n/** The user answer to the question \"{{QUESTION}}\" */\ninterface Output = { choice: {{CHOICES_TYPINGS}} }\n```\n\nHere is a conversation between me and a user. Transcript:\n\"\"\"\n(...)\n{{TRANSCRIPT}}\n\"\"\"\n\nIn the last user message, here are the entities found:\n\"\"\"\nENTITIES_IDENTIFIED\n\"\"\"\n\nI need you to extract from the conversation transcript above the values the user has provided.\nIf the user has not provided the information I need, I need you to set the value of the missing answer properties to null.\nHave some tolerance to typos and variations in how the user selects from the possible values.\n\n\n\nNow, please reply to me with the above JSON output and nothing but JSON.\nYou should not explain your answer and should not talk back to me. Just JSON."
+                  }
+                ],
+                "model": "gpt-3.5-turbo",
+                "temperature": 0,
+                "signatureVersion": "Jun-2023",
+                "signature": "bVu49Pre5q6DHlBFHgwm9WRpKblGPBZEVz9lE1T/kSknjafz8d4zyUGOUmre70ijj2brtSymiTuHw41rgUeoCl/HXkA3kpomvC1RU1QBili6tzgAvH+4CC1PGSL/kP+71QgVkqv73DXrN1UAAH60wru/Oc8nuHvtTKxeoghxZzkmwKpFWq9L8Appklcjf5Pr+4N2Q9JQtxsr4D2+SSc7cCBec71TQVpOxhmPHfxaaKfgzGV4PZbUFI0JZEkmMppHHz+6iTlkoeWG45ukpCwCw7ppjnps4TYI/bR2gWVOyN9J3mVYmZoH7pNY7UWjd/mB+HjubAfZAeNF7FXvVKzcrA=="
+              }
+            }
+          ],
+          "defaultTransition": {
+            "targetNodeId": null
+          },
+          "type": "standard",
+          "id": "nd-f3cdf0f6e6",
+          "name": "Features",
+          "deletable": true,
+          "x": 585,
+          "y": -390
+        },
+        {
+          "instructions": [
+            {
+              "id": "ins-e5b1081228",
+              "type": "content",
+              "content": {
+                "type": "audio",
+                "audioUrl": {
+                  "staticValue": "https://s3.us-east-1.amazonaws.com/cloud-studio-botsbca2d619-1916w6llinepa/91f131c5-1e85-4367-b556-881054d40565/media/04eb9601-faed-45df-b30a-9c450c34448c.wav",
+                  "valueType": "static"
+                },
+                "title": {
+                  "valueType": "dynamic",
+                  "dynamicValue": "Welcome To WikiWise !",
+                  "staticValue": ""
+                }
+              },
+              "nodeId": "nd-e8c9f38e5b",
+              "target": null
+            },
+            {
+              "id": "ins-a75b4d48a7",
+              "type": "transition",
+              "condition": {
+                "type": "expression",
+                "payload": "true"
+              },
+              "label": "always",
+              "generative": {
+                "label": "always",
+                "suggestion": {
+                  "condition": "true"
+                },
+                "properties": {
+                  "condition": true
+                }
+              },
+              "nodeId": "nd-e8c9f38e5b",
+              "destination": {
+                "node": "nd-f3cdf0f6e6"
+              }
+            }
+          ],
+          "defaultTransition": {
+            "targetNodeId": null
+          },
+          "type": "standard",
+          "id": "nd-e8c9f38e5b",
+          "name": "WELCOME",
+          "deletable": true,
+          "x": 240,
+          "y": -240
+        },
+        {
+          "id": "nd-3eda89baaa",
+          "deletable": true,
+          "type": "trigger",
+          "integrationId": "webchat",
+          "triggerId": "trigger",
+          "instructions": [
+            {
+              "id": "trs-91db3f106e",
+              "type": "transition",
+              "label": "",
+              "condition": {
+                "type": "expression",
+                "payload": "true"
+              },
+              "destination": {
+                "node": "nd-e8c9f38e5b"
+              },
+              "generative": {
+                "label": "",
+                "properties": {
+                  "label": true,
+                  "condition": true
+                },
+                "suggestion": {
+                  "label": "",
+                  "condition": "true"
+                }
+              }
+            }
+          ],
+          "name": "Trigger1",
+          "examples": [],
+          "data": {},
+          "x": -105,
+          "y": -90
+        },
+        {
+          "id": "nd-2bb9db230d",
+          "name": "Start",
+          "type": "start",
+          "deletable": false,
+          "instructions": [
+            {
+              "id": "trs-8b0779edc5",
+              "type": "transition",
+              "condition": {
+                "type": "expression",
+                "payload": "true"
+              },
+              "destination": {
+                "node": "nd-e8c9f38e5b"
+              }
+            }
+          ],
+          "x": -150,
+          "y": -240,
+          "kbPriority": {
+            "enabled": true,
+            "searchScope": "specific",
+            "kbs": [
+              "kb-2f0a7ea639"
+            ]
+          }
+        },
+        {
+          "id": "nd-80ac4ff158",
+          "name": "End",
+          "type": "end",
+          "deletable": false,
+          "instructions": [
+            {
+              "id": "trs-0260f5e672",
+              "type": "transition",
+              "condition": {
+                "type": "expression",
+                "payload": "true"
+              },
+              "destination": {
+                "node": "END"
+              }
+            }
+          ],
+          "x": 2520,
+          "y": 360
+        }
+      ],
+      "parentFolder": "root"
+    }
+  ],
+  "intents": [
+    {
+      "id": "int-cancel",
+      "name": "cancel",
+      "utterances_with_slots": [
+        "cancel",
+        "abort",
+        "abandon",
+        "i want to cancel",
+        "forget about this",
+        "leave",
+        "stop",
+        "quit",
+        "you know what, nevermind",
+        "forget it"
+      ]
+    },
+    {
+      "id": "int-no",
+      "name": "no",
+      "utterances_with_slots": [
+        "no",
+        "i don't want to",
+        "absolutely not",
+        "nah",
+        "nope",
+        "not really",
+        "not sure",
+        "no thanks"
+      ]
+    },
+    {
+      "id": "int-yes",
+      "name": "yes",
+      "utterances_with_slots": [
+        "yes",
+        "yeah",
+        "absolutely",
+        "i'd like to",
+        "sure ",
+        "hmm probably",
+        "yup",
+        "ok"
+      ]
+    }
+  ],
+  "list_entities": [],
+  "pattern_entities": [],
+  "actions": [],
+  "hooks": [],
+  "qnas": [],
+  "knowledge_base": [
+    {
+      "dataSources": [],
+      "description": "This is about New KB1",
+      "id": "kb-2f0a7ea639",
+      "name": "Default Knowledge Base",
+      "parentFolder": "root"
+    },
+    {
+      "dataSources": [
+        {
+          "created_on": 1709956601523,
+          "data": {
+            "documents": [],
+            "indexingJobs": [
+              "91f131c5-1e85-4367-b556-881054d40565-01HRGNP958V2KAQ8W8W95C6BS0"
+            ]
+          },
+          "disabled": false,
+          "id": "ds-7b227f49eb",
+          "title": "FAQs.docx",
+          "type": "document"
+        },
+        {
+          "created_on": 1709958674905,
+          "data": {
+            "documents": [],
+            "indexingJobs": [
+              "91f131c5-1e85-4367-b556-881054d40565-01HRGQNFPXBSRKADWDT6NC98DG"
+            ]
+          },
+          "disabled": false,
+          "id": "ds-82fb5174c2",
+          "title": "About.txt",
+          "type": "document"
+        }
+      ],
+      "description": "This is about New KB1",
+      "id": "kb-4130b950c9",
+      "name": "DataSet",
+      "parentFolder": "root"
+    },
+    {
+      "dataSources": [
+        {
+          "created_on": 1709947285823,
+          "data": {
+            "indexingJobs": [
+              "91f131c5-1e85-4367-b556-881054d40565-01HRGCSW3TV07J0KJWVNMD11KC"
+            ],
+            "pages": []
+          },
+          "disabled": false,
+          "id": "ds-2eb494e648",
+          "title": "en.wikipedia.org",
+          "type": "web-page"
+        },
+        {
+          "created_on": 1709947272216,
+          "data": {
+            "indexingJobs": [
+              "91f131c5-1e85-4367-b556-881054d40565-01HRGCSEVDH19BR93CAJXJ6XFG"
+            ],
+            "pages": []
+          },
+          "disabled": false,
+          "id": "ds-886226d751",
+          "title": "en.wikipedia.org",
+          "type": "web-page"
+        },
+        {
+          "created_on": 1709947212446,
+          "data": {
+            "indexingJobs": [
+              "91f131c5-1e85-4367-b556-881054d40565-01HRGCQMF5RTD3D0S8KJGH9QCY"
+            ],
+            "pages": []
+          },
+          "disabled": false,
+          "id": "ds-b7f37c8069",
+          "title": "en.wikipedia.org",
+          "type": "web-page"
+        }
+      ],
+      "description": "This is about New KB1",
+      "id": "kb-ae200118b2",
+      "name": "Web_sites",
+      "parentFolder": "root"
+    }
+  ],
+  "folders": [],
+  "agents": {
+    "SummaryAgent": {
+      "enabled": true,
+      "config": {
+        "summaryMaxTokens": 100
+      }
+    },
+    "TranslatorAgent": {
+      "config": {
+        "detectLanguage": true
+      }
+    },
+    "KnowledgeAgent": {
+      "enabled": true,
+      "config": {
+        "answerManually": false,
+        "context": "Summary of the conversation:\n\"\"\"\n{{conversation.SummaryAgent.summary}}\n\"\"\"\n\nTranscript:\n\"\"\"\n{{conversation.SummaryAgent.transcript}}\n\"\"\"",
+        "strategy": "hybrid"
+      }
+    },
+    "PersonalityAgent": {
+      "config": {
+        "personality": ""
+      }
+    }
+  },
+  "tables": {}
+}

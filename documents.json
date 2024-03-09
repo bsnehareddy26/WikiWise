@@ -1,0 +1,181 @@
+[
+  {
+    "id": "f31477f1-bfa4-49df-be53-14277e76f10a",
+    "label": "https://en.wikipedia.org/wiki/Wikipedia:Citing_sources",
+    "name": "https://s3.us-east-1.amazonaws.com/botpress-documents/91f131c5-1e85-4367-b556-881054d40565/document/01hrgcshdfjq7y5x4wrhqa9fzv.html",
+    "dataSourceId": "ds-886226d751",
+    "lastModified": "2024-03-09T01:21:15.136Z",
+    "size": 382535,
+    "metadata": {
+      "type": "html",
+      "title": "Wikipedia:Citing sources - Wikipedia",
+      "author": null,
+      "favicon": "https://en.wikipedia.org/static/apple-touch/wikipedia.png",
+      "pageUrl": "https://en.wikipedia.org/wiki/Wikipedia:Citing_sources",
+      "description": null,
+      "datePublished": null
+    },
+    "tags": [
+      "ds-886226d751"
+    ],
+    "chunks": 156
+  },
+  {
+    "id": "8efe14ac-2a7a-4187-ac9d-1db1003d1559",
+    "label": "https://en.wikipedia.org/wiki/Help:Rename",
+    "name": "https://s3.us-east-1.amazonaws.com/botpress-documents/91f131c5-1e85-4367-b556-881054d40565/document/01hrgcswyy1jjq73ag44kr73x7.html",
+    "dataSourceId": "ds-2eb494e648",
+    "lastModified": "2024-03-09T01:21:26.642Z",
+    "size": 65184,
+    "metadata": {
+      "type": "html",
+      "title": "Help:Rename - Wikipedia",
+      "author": null,
+      "favicon": "https://en.wikipedia.org/static/apple-touch/wikipedia.png",
+      "pageUrl": "https://en.wikipedia.org/wiki/Help:Rename",
+      "description": null,
+      "datePublished": null
+    },
+    "tags": [
+      "ds-2eb494e648"
+    ],
+    "chunks": 6
+  },
+  {
+    "id": "88e7e684-a8bd-47cc-9b37-53e4b07a3d47",
+    "label": "https://en.wikipedia.org/wiki/Help:Your_first_article",
+    "name": "https://s3.us-east-1.amazonaws.com/botpress-documents/91f131c5-1e85-4367-b556-881054d40565/document/01hrgcv85d0z801k4shq6q28f5.html",
+    "dataSourceId": "ds-b1369979e1",
+    "lastModified": "2024-03-09T01:22:10.985Z",
+    "size": 180161,
+    "metadata": {
+      "type": "html",
+      "title": "Help:Your first article - Wikipedia",
+      "author": null,
+      "favicon": "https://en.wikipedia.org/static/apple-touch/wikipedia.png",
+      "pageUrl": "https://en.wikipedia.org/wiki/Help:Your_first_article",
+      "description": null,
+      "datePublished": null
+    },
+    "tags": [
+      "ds-b1369979e1"
+    ],
+    "chunks": 63
+  },
+  {
+    "id": "046b3564-3b08-4b19-ba56-60043ca1b063",
+    "label": "https://en.wikipedia.org/wiki/Help:Editing",
+    "name": "https://s3.us-east-1.amazonaws.com/botpress-documents/91f131c5-1e85-4367-b556-881054d40565/document/01hrgcvp1bma920fqasyr9kxgp.html",
+    "dataSourceId": "ds-900865a944",
+    "lastModified": "2024-03-09T01:22:25.146Z",
+    "size": 255651,
+    "metadata": {
+      "type": "html",
+      "title": "Help:Editing - Wikipedia",
+      "author": null,
+      "favicon": "https://en.wikipedia.org/static/apple-touch/wikipedia.png",
+      "pageUrl": "https://en.wikipedia.org/wiki/Help:Editing",
+      "description": null,
+      "datePublished": null
+    },
+    "tags": [
+      "ds-900865a944"
+    ],
+    "chunks": 36
+  },
+  {
+    "id": "7ed06c3a-0ddd-484f-8e9c-5bf0dfbd9567",
+    "label": "https://en.wikipedia.org/wiki/Help:Link",
+    "name": "https://s3.us-east-1.amazonaws.com/botpress-documents/91f131c5-1e85-4367-b556-881054d40565/document/01hrgctg55rbhr2s8zwf9ppna9.html",
+    "dataSourceId": "ds-01d8994475",
+    "lastModified": "2024-03-09T01:21:46.381Z",
+    "size": 230776,
+    "metadata": {
+      "type": "html",
+      "title": "Help:Link - Wikipedia",
+      "author": null,
+      "favicon": "https://en.wikipedia.org/static/apple-touch/wikipedia.png",
+      "pageUrl": "https://en.wikipedia.org/wiki/Help:Link",
+      "description": null,
+      "datePublished": null
+    },
+    "tags": [
+      "ds-01d8994475"
+    ],
+    "chunks": 82
+  },
+  {
+    "id": "aeecec27-1f19-48eb-a0aa-e97a274581c5",
+    "label": "https://en.wikipedia.org/wiki/Wikipedia:How_to_delete_a_page",
+    "name": "https://s3.us-east-1.amazonaws.com/botpress-documents/91f131c5-1e85-4367-b556-881054d40565/document/01hrgctx148esttrkjg8549k7a.html",
+    "dataSourceId": "ds-8b2a6244d0",
+    "lastModified": "2024-03-09T01:21:59.478Z",
+    "size": 81737,
+    "metadata": {
+      "type": "html",
+      "title": "Wikipedia:How to delete a page - Wikipedia",
+      "author": null,
+      "favicon": "https://en.wikipedia.org/static/apple-touch/wikipedia.png",
+      "pageUrl": "https://en.wikipedia.org/wiki/Wikipedia:How_to_delete_a_page",
+      "description": null,
+      "datePublished": null
+    },
+    "tags": [
+      "ds-8b2a6244d0"
+    ],
+    "chunks": 10
+  },
+  {
+    "id": "0123d30b-4e15-417f-bfdd-4f11d35056b6",
+    "label": "https://en.wikipedia.org/wiki/Wikipedia:Editing_on_mobile_devices",
+    "name": "https://s3.us-east-1.amazonaws.com/botpress-documents/91f131c5-1e85-4367-b556-881054d40565/document/01hrgcqntxbbyk5t1h3sehsdsg.html",
+    "dataSourceId": "ds-b7f37c8069",
+    "lastModified": "2024-03-09T01:20:13.989Z",
+    "size": 152556,
+    "metadata": {
+      "type": "html",
+      "title": "Wikipedia:Editing on mobile devices - Wikipedia",
+      "author": null,
+      "favicon": "https://en.wikipedia.org/static/apple-touch/wikipedia.png",
+      "pageUrl": "https://en.wikipedia.org/wiki/Wikipedia:Editing_on_mobile_devices",
+      "description": null,
+      "datePublished": null
+    },
+    "tags": [
+      "ds-b7f37c8069"
+    ],
+    "chunks": 14
+  },
+  {
+    "id": "e14d7980-2bf9-491c-9b35-fbcecffa0371",
+    "label": "FAQs.docx",
+    "name": "https://s3.us-east-1.amazonaws.com/cloud-studio-botsbca2d619-1916w6llinepa/91f131c5-1e85-4367-b556-881054d40565/document/b86d1edb-97ca-4367-8bf2-8b6052444d35.docx",
+    "dataSourceId": "ds-7b227f49eb",
+    "lastModified": "2024-03-09T03:56:45.183Z",
+    "size": 313617,
+    "metadata": {
+      "type": "docx",
+      "fileName": "FAQs.docx"
+    },
+    "tags": [
+      "ds-7b227f49eb"
+    ],
+    "chunks": 45
+  },
+  {
+    "id": "a7922c31-d509-4f96-b254-a1efe93daac4",
+    "label": "About.txt.txt",
+    "name": "https://s3.us-east-1.amazonaws.com/cloud-studio-botsbca2d619-1916w6llinepa/91f131c5-1e85-4367-b556-881054d40565/document/3d94a943-6dba-4abf-92b1-35ac693179ba.txt",
+    "dataSourceId": "ds-82fb5174c2",
+    "lastModified": "2024-03-09T04:31:16.260Z",
+    "size": 0,
+    "metadata": {
+      "type": "text",
+      "fileName": "About.txt.txt"
+    },
+    "tags": [
+      "ds-82fb5174c2"
+    ],
+    "chunks": 0
+  }
+]
